@@ -82,8 +82,9 @@ void tcp_connection::handle_read(const boost::system::error_code& error,
 
   ptime now = second_clock::local_time(); 
 
-  std::string message = user_name_ + " [" +
-       to_simple_string(now - ptime(now.date())) + "]: " + 
+  std::string message = 
+       "[" + to_simple_string(now - ptime(now.date())) + "] " +
+       user_name_ + ": " + 
        std::string(buf_.data()).substr(0, bytes_transferred);
 
   server_->send_all_users(message, user_id_);
