@@ -3,6 +3,5 @@ Building in linux:
 
 2. For ease, move include files to /usr/include/ and binaries to /usr/lib/
 
-3. Compile with either of the following commands:
-      dynamic linking:
-      g++ server.cpp tcp_connection.cpp tcp_server.cpp -lboost_system -lpthread -o server
+3. Compile with the following command:
+      g++ server.cpp tcp_connection.cpp tcp_server.cpp -lboost_system -lboost_date_time -lpthread -o server
