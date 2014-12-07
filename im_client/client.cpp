@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
     std::string ip_address, user_name;
     std::cout << "Enter IP address of server: ";
     std::cin >> ip_address;
-    if(ip_address=="-1")ip_address="75.142.43.130;
+    if(ip_address=="")ip_address="75.142.43.130";
 
     std::cout << "Enter desired username: ";
     std::cin >> user_name;
