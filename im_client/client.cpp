@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
     if(ip_address=="")ip_address="75.142.43.130";
 
     std::cout << "Enter desired username: ";
-    std::getline(std::cin, user_name)
+    std::getline(std::cin, user_name);
     
     IRC_User user(io_service, ip_address, user_name);
     boost::thread t(boost::bind(&GetInput, &io_service, &user));

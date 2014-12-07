@@ -7,5 +7,5 @@ Building in linux:
       dynamic linking:
       g++ client.cpp -lboost_system -lpthread -lboost_thread -o client
       static linking:
-      g++ client.cpp -lboost_system -lpthread -lboost_thread -static -o client -lrt
+      g++ client.cpp -lboost_system -pthread -lboost_thread -static -o client -lrt
 
