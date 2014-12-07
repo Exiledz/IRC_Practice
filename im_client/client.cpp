@@ -45,7 +45,7 @@ class IRC_User {
 
 void GetInput(boost::asio::io_service* io_service, IRC_User* user) {
   std::string input;
-  while(input != "/exit") {
+  while(true) {
     std::getline(std::cin, input);
     io_service->post(boost::bind(&IRC_User::send, user, input));
   }
@@ -56,11 +56,11 @@ int main(int argc, char* argv[]) {
     boost::asio::io_service io_service;
     std::string ip_address, user_name;
     std::cout << "Enter IP address of server: ";
-    std::cin >> ip_address;
+    std::getline(std::cin, ip_address);
     if(ip_address=="")ip_address="75.142.43.130";
 
     std::cout << "Enter desired username: ";
-    std::cin >> user_name;
+    std::getline(std::cin, user_name)
     
     IRC_User user(io_service, ip_address, user_name);
     boost::thread t(boost::bind(&GetInput, &io_service, &user));
