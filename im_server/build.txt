@@ -1,0 +1,8 @@
+Building in linux:
+1. Install boost 1.57.0 -- See http://www.boost.org/doc/libs/1_57_0/more/getting_started/unix-variants.html. Make sure to build binaries as they will be needed. Also build again with link=static option for static binaries if needed.
+
+2. For ease, move include files to /usr/include/ and binaries to /usr/lib/
+
+3. Compile with either of the following commands:
+      dynamic linking:
+      g++ server.cpp tcp_connection.cpp tcp_server.cpp -lboost_system -lpthread -o server
