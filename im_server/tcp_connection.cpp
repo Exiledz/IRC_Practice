@@ -1,13 +1,13 @@
 #include "tcp_server.h"
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/date_time/posix_time/posix_time_io.hpp>
 #include <boost/bind.hpp>
 #include <ctime>
 #include <iostream>
 #include <map>
 
 using boost::asio::ip::tcp;
+using namespace boost::posix_time;
 
 // static
 tcp_connection::pointer tcp_connection::create(tcp_server* server,
@@ -79,9 +79,13 @@ void tcp_connection::handle_read(const boost::system::error_code& error,
     finish();
     return;
   }
-  boost::posix_time::ptime now = boost::posix_time::second_clock::local_time();
-  std::string message = to_simple_string(now) + " " + user_name_ + ": " +
-                        std::string(buf_.data()).substr(0, bytes_transferred);
+
+  ptime now = second_clock::local_time(); 
+
+  std::string message = user_name_ + " [" +
+       to_simple_string(now - ptime(now.date())) + "]: " + 
+       std::string(buf_.data()).substr(0, bytes_transferred);
+
   server_->send_all_users(message, user_id_);
   start_read();
 }
